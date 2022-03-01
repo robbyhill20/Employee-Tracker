@@ -26,7 +26,7 @@ class DB {
       "SELECT employee.id, employee.first_name, employee.last_name, department.name, role.title, role.salary, manager.first_name, manager.last_name, department.name, department.id;"
     );
   }
-  findDepartments() {
+  viewDepartments() {
     return this.connection.promise.query(
       "SELECT department.id, department.name, SUM(role.salary) AS total_budget FROM employee;"
     );
@@ -77,3 +77,4 @@ class DB {
     return this.connection.promise().query("DELETE FROM department WHERE id = ?", roleId)
   }
 }
+module.exports = new DB(connection)
